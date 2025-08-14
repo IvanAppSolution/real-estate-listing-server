@@ -115,8 +115,6 @@ if (process.env.VERCEL) {
         await initializeServices()
         app.listen(port, () => {
             console.log(`🚀 Server is running on port ${port}`)
-            console.log(`📍 API available at: http://localhost:${port}/api`)
-            console.log(`🏥 Health check: http://localhost:${port}/health`)
         })
     })()
 }

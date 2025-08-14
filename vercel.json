@@ -7,16 +7,16 @@
             "config": {
                 "buildCommand": "npm run build"
             }
-        },
-        {
-            "src": "api/index.ts",
-            "use": "@vercel/node"
         }
     ],
     "routes": [
         {
             "src": "/api/(.*)",
-            "dest": "/api/index"
+            "dest": "/dist/server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/dist/server.js"
         }
     ],
     "env": {
