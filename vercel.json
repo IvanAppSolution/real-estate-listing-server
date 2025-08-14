@@ -1,14 +1,15 @@
 {
     "version": 2,
-    "functions": {
-        "api/*.ts": {
-            "runtime": "nodejs22.x"
-        }
-    },
-    "rewrites": [
+    "builds": [
         {
-            "source": "/api/(.*)",
-            "destination": "/api/index"
+            "src": "api/index.ts",
+            "use": "@vercel/node@3.0.0"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/index"
         }
     ]
 }
