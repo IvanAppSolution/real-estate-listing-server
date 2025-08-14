@@ -51,9 +51,6 @@ app.use(cors(corsOptions))
 
 app.use('/api/user', userRouter)
 app.use('/api/list', listRouter)
-app.get('/api', (req: any, res: any) => {
-    res.send('Api is working')
-})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)

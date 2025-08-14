@@ -158,3 +158,13 @@ export const logout = async (req: any, res: any): Promise<void> => {
         res.json({ success: false, message: (error as Error).message })
     }
 }
+
+export const pong = async (req: any, res: any): Promise<void> => {
+    try {
+        res.json({ success: true, message: "Pong" })
+    } catch (error) {
+        console.log((error as Error).message)
+        res.json({ success: false, message: (error as Error).message })
+    }
+}
+
