@@ -95,8 +95,9 @@ app.use((req: any, res: any) => {
     })
 })
 
+console.log('Initializing server...')
 // For Vercel serverless deployment
-if (process.env.VERCEL) {
+if (process.env.NODE_ENV === 'production') {
     module.exports = async (req: any, res: any) => {
         try {
             await initializeServices()
@@ -112,6 +113,7 @@ if (process.env.VERCEL) {
 } else {
     // For local development
     ;(async () => {
+        console.log('Starting local server...')
         await initializeServices()
         app.listen(port, () => {
             console.log(`🚀 Server is running on port ${port}`)
