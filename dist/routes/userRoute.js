@@ -12,5 +12,6 @@ userRouter.post('/login', userController_1.login);
 userRouter.get('/is-auth', authUser_1.default, userController_1.isAuth);
 userRouter.get('/profile', authUser_1.default, userController_1.getProfile);
 userRouter.get('/logout', authUser_1.default, userController_1.logout);
+userRouter.get('/ping', userController_1.pong);
 exports.default = userRouter;
 //# sourceMappingURL=userRoute.js.map

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logout = exports.getProfile = exports.isAuth = exports.login = exports.register = void 0;
+exports.pong = exports.logout = exports.getProfile = exports.isAuth = exports.login = exports.register = void 0;
 const User_1 = __importDefault(require("../models/User"));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -121,4 +121,14 @@ const logout = async (req, res) => {
     }
 };
 exports.logout = logout;
+const pong = async (req, res) => {
+    try {
+        res.json({ success: true, message: "Pong" });
+    }
+    catch (error) {
+        console.log(error.message);
+        res.json({ success: false, message: error.message });
+    }
+};
+exports.pong = pong;
 //# sourceMappingURL=userController.js.map
