@@ -1,18 +1,14 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/index.ts",
-            "use": "@vercel/node@3.0.0"
+    "functions": {
+        "api/*.ts": {
+            "runtime": "nodejs22.x"
         }
-    ],
-    "routes": [
+    },
+    "rewrites": [
         {
-            "src": "/api/(.*)",
-            "dest": "/api/index"
+            "source": "/api/(.*)",
+            "destination": "/api/index"
         }
-    ],
-    "env": {
-        "NODE_ENV": "production"
-    }
+    ]
 }
