@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "author": "Ivan Alcuino",
-  "main": "dist/server.js",
+  "main": "netlify/functions/api.js",
   "scripts": {
     "build": "tsc",
+    "build:netlify": "npm run build && npm run copy-functions",
+    "copy-functions": "cp -r netlify dist/ || xcopy netlify dist\\ /E /I",
     "dev": "nodemon src/server.ts",
-    "start": "node dist/server.js",
-    "vercel-build": "npm run build"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "@vercel/node": "^3.0.0",
+    "@netlify/functions": "^2.8.2",
     "bcryptjs": "^3.0.2",
     "cloudinary": "^2.6.0",
     "cookie-parser": "^1.4.7",
@@ -22,7 +23,8 @@
     "express": "^4.18.0",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^8.0.0",
-    "multer": "^1.4.5-lts.2"
+    "multer": "^1.4.5-lts.2",
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.0",
@@ -34,8 +36,7 @@
     "@types/node": "^22.0.0",
     "nodemon": "^3.0.0",
     "ts-node": "^10.9.0",
-    "typescript": "^5.7.3",
-    "@types/mongoose": "^5.11.97"
+    "typescript": "^5.7.3"
   },
   "engines": {
     "node": "22.x"
