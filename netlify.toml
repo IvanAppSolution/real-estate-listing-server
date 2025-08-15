@@ -1,0 +1,23 @@
+[build]
+  functions = "netlify/functions"
+  command = "npm run build:netlify"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
