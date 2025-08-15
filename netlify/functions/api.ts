@@ -87,13 +87,13 @@ app.use((err: any, req: any, res: any, next: any) => {
     })
 })
 
-// Initialize services before handling requests
-const handler = serverless(app)
+// Create the serverless handler
+const serverlessHandler = serverless(app)
 
 export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
     try {
         await initializeServices()
-        return await handler(event, context)
+        return await serverlessHandler(event, context)
     } catch (error) {
         console.error('Netlify function error:', error)
         return {
