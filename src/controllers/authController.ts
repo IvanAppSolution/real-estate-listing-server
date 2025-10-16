@@ -1,6 +1,6 @@
 import User from '../models/User'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 interface AuthRequest {
     userId?: string
