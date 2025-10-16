@@ -9,6 +9,7 @@ import 'dotenv/config'
 import userRouter from './routes/userRoute'
 import listRouter from './routes/listRoute'
 import connectCloudinary from './configs/cloudinary'
+import authRouter from './routes/auth'
 
 const app = express()
 const port: number = parseInt(process.env.PORT || '4000')
@@ -57,6 +58,7 @@ app.use(cookieParser())
 app.use(cors(corsOptions))
 
 // Routes
+app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
 app.use('/api/list', listRouter)
 
