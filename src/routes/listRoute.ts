@@ -9,7 +9,7 @@ listRouter.get('', lists)
 listRouter.get('/myListings', authUser, myListings)
 listRouter.get('/:id', listById)
 listRouter.post('/add', upload.none(), authUser, addList)
-listRouter.post('/update', upload.none(), authUser, updateList)
+listRouter.put('/:id', upload.none(), authUser, updateList)
 listRouter.post('/media/upload', upload.array('images'), authUser, mediaUpload)
 listRouter.delete('/:id', authUser, deleteList)
 
