@@ -56,7 +56,7 @@ export const lists = async (req: any, res: any): Promise<void> => {
     }
 }
 
-// Get single List : /list/id
+// Get single List : /list/:id
 export const listById = async (req: any, res: any): Promise<void> => {
     try {
         const { id } = req.params
@@ -68,10 +68,11 @@ export const listById = async (req: any, res: any): Promise<void> => {
     }
 }
 
-// Update List : /list/update
+// Update List : /list/:id
 export const updateList = async (req: any, res: any): Promise<void> => {
     try {
-        let { id, listData } = req.body
+        const { id } = req.params
+        let { listData } = req.body
         if (!id || !listData) {
             res.json({ success: false, message: "ID and list data are required" })
             return
