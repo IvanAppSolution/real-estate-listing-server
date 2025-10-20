@@ -13,6 +13,7 @@ import connectDB from '../../src/configs/db'
 import userRouter from '../../src/routes/userRoute'
 import listRouter from '../../src/routes/listRoute'
 import connectCloudinary from '../../src/configs/cloudinary'
+import authRouter from '../../src/routes/auth'
 
 const app = express()
 
@@ -51,6 +52,7 @@ app.use(cookieParser())
 app.use(cors(corsOptions))
 
 // Routes - Note: Netlify functions run under /.netlify/functions/api
+app.use('/.netlify/functions/api/auth', authRouter)
 app.use('/.netlify/functions/api/user', userRouter)
 app.use('/.netlify/functions/api/list', listRouter)
 
@@ -71,6 +73,7 @@ app.get('/.netlify/functions/api', (req: any, res: any) => {
         timestamp: new Date().toISOString(),
         endpoints: [
             '/.netlify/functions/api/health',
+            '/.netlify/functions/api/auth',
             '/.netlify/functions/api/user',
             '/.netlify/functions/api/list'
         ]
