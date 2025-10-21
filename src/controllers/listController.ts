@@ -78,9 +78,8 @@ export const updateList = async (req: any, res: any): Promise<void> => {
             return
         }
 
-        const parsedId = JSON.parse(id)
         const parsedListData = JSON.parse(listData)
-        await List.findByIdAndUpdate(parsedId, { ...parsedListData })
+        await List.findByIdAndUpdate(id, { ...parsedListData })
         res.json({ success: true, message: "List Updated" })
     } catch (error) {
         console.log((error as Error).message)
